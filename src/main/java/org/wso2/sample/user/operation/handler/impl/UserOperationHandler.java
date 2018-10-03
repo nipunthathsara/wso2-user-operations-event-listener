@@ -11,8 +11,7 @@ import java.util.Map;
 public class UserOperationHandler extends AbstractIdentityUserOperationEventListener {
 
     private static Log log = LogFactory.getLog(UserOperationHandler.class);
-    private static String askPasswordClaimURI = "http://wso2.org/claims/identity/askPassword";
-    private static String verifyEmailClaimURI = "http://wso2.org/claims/identity/verifyEmail";
+    private static final String askPasswordClaimURI = "http://wso2.org/claims/identity/askPassword";
 
     /**
      * This should be executed before org.wso2.carbon.identity.governance.listener.IdentityMgtEventListener.
@@ -30,7 +29,6 @@ public class UserOperationHandler extends AbstractIdentityUserOperationEventList
                                 String profile, UserStoreManager userStoreManager) throws UserStoreException {
         log.debug("in pre add user");
         claims.put(askPasswordClaimURI, "true");
-        claims.put(verifyEmailClaimURI, "true");
         return super.doPreAddUser(userName, credential, roleList, claims, profile, userStoreManager);
     }
 }

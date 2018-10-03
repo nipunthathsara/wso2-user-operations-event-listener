@@ -20,7 +20,7 @@ public class UserOperationServiceComponent {
             bundleContext.registerService(UserOperationEventListener.class.getName(), new UserOperationHandler(), null);
             log.info("Custom user operations listener activated");
         } catch (Throwable e) {
-            log.error(e.getMessage(), e);
+            log.error("Error occurred while activating listener... ", e);
         }
     }
 }
